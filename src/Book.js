@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 
 class Book extends Component {
     render() {
-        const authors = this.props.book.authors && this.props.book.authors.join(' | ');
-        let book = this.props.book;
-        
+        const authors = this.props.book.authors && this.props.book.authors.join(' & ');
+        const book = this.props.book;
+
         return (
             <li key={this.props.book.id}>
                 <div className="book">
@@ -15,7 +15,7 @@ class Book extends Component {
                             style={{
                                 width: 128,
                                 height: 193,
-                                backgroundImage: `url("${this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail : ""}")`
+                                backgroundImage: `url("${book.imageLinks.thumbnail})`
                             }}>
                             <div className="book-shelf-changer">
                                 <select
@@ -35,7 +35,7 @@ class Book extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="book-title">{this.props.book.title}</div>
+                    <div className="book-title">{book.title}</div>
                     <div className="book-authors">{authors}</div>
                 </div>
             </li>
