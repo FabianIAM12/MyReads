@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import * as BooksAPI from './BooksAPI'
 
 
 class Book extends Component {
@@ -6,8 +7,9 @@ class Book extends Component {
         const authors = this.props.book.authors && this.props.book.authors.join(' & ');
         const book = this.props.book;
 
+        let UpdateShelf = this.props.updateShelf;
         return (
-            <li key={this.props.book.id}>
+            <li>
                 <div className="book">
                     <div className="book-top">
                         <div
@@ -20,8 +22,8 @@ class Book extends Component {
                             <div className="book-shelf-changer">
                                 <select
                                     onChange={(event) => {
-                                        this.props.refreshAllBooks(
-                                            this.props.book, event.target.value
+                                        UpdateShelf(
+                                            book, event.target.value
                                         )
                                     }}
                                     value={book.shelf || "none"}
