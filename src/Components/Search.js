@@ -18,15 +18,17 @@ class Search extends Component {
     search(query) {
         if (query) {
             BooksAPI.search(query).then((books) => {
-                if (books.error) {
-                    this.setState({books: []});
-                } else {
-                    this.setState({
-                        books
-                    })
+                if (query === this.state.query) {
+                    if (books.error) {
+                        this.setState({books: []});
+                    } else {
+                        this.setState({
+                            books
+                        })
+                    }
                 }
             })
-        }else{
+        } else {
             this.setState({books: []});
         }
     }
@@ -35,8 +37,8 @@ class Search extends Component {
         const cursor = {
             cursor: 'pointer'
         };
-        const {books} = this.state
-        const {updateShelf} = this.props
+        const {books} = this.state;
+        const {updateShelf} = this.props;
 
         return (
             <div className="search-books">

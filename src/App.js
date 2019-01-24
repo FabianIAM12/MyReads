@@ -1,7 +1,7 @@
 import React from 'react'
 import BooksWall from './Components/BooksWall'
 import Search from './Components/Search'
-import {Route} from "react-router-dom";
+import { Switch, Route } from 'react-router'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -12,7 +12,7 @@ class BooksApp extends React.Component {
     }
 
     componentDidMount() {
-        BooksAPI.getAll().then((response) => this.setState({books: response}))
+        this.getAllBooks()
     }
 
     updateShelf = (book, shelf) => {
@@ -35,16 +35,18 @@ class BooksApp extends React.Component {
                 <div className="list-books-title">
                     <h1>My current Reads</h1>
                 </div>
-                <Route exact path="/"
-                       render={() => (
-                           <BooksWall books={this.state.books} updateShelf={this.updateShelf}/>
-                       )}
-                />
-                <Route exact path="/search"
-                       render={() => (
-                           <Search updateShelf={this.updateShelf}/>
-                       )}
-                />
+                <Switch>
+                    <Route exact path="/"
+                           render={() => (
+                               <BooksWall books={this.state.books} updateShelf={this.updateShelf}/>
+                           )}
+                    />
+                    <Route exact path="/search"
+                           render={() => (
+                               <Search saved_books={this.state.books} updateShelf={this.updateShelf}/>
+                           )}
+                    />
+                </Switch>
             </div>
         )
     }
