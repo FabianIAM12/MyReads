@@ -16,29 +16,28 @@ class Search extends Component {
     }
 
     search(query) {
-        BooksAPI.search(query).then((books) => {
-            console.log(books)
-            if (!books.error) {
-                this.setState({
-                    books
-                })
-            } else {
-                this.setState({searchedBooks: []});
-            }
-        })
+        if (query) {
+            BooksAPI.search(query).then((books) => {
+                if (books.error) {
+                    this.setState({books: []});
+                } else {
+                    this.setState({
+                        books
+                    })
+                }
+            })
+        }else{
+            console.log('here')
+            this.setState({books: []});
+        }
     }
 
     render() {
         const cursor = {
             cursor: 'pointer'
         };
-
-        const {query, books} = this.state
+        const {books} = this.state
         const {updateShelf} = this.props
-
-        if (this.state.query) {
-            this.search(query)
-        }
 
         return (
             <div className="search-books">
@@ -57,6 +56,7 @@ class Search extends Component {
                             <Book book={book}
                                   key={book.id}
                                   updateShelf={updateShelf}
+                                  disableNone={true}
                             />
                         ))}
                     </ol>

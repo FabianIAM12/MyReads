@@ -5,8 +5,11 @@ class Book extends Component {
     render() {
         const authors = this.props.book.authors && this.props.book.authors.join(' & ');
         const book = this.props.book;
+        let disableNone = this.props.disableNone;
 
         let UpdateShelf = this.props.updateShelf;
+        let thumbnail = book.imageLinks ? book.imageLinks.thumbnail:"";
+
         return (
             <li>
                 <div className="book">
@@ -16,7 +19,7 @@ class Book extends Component {
                             style={{
                                 width: 128,
                                 height: 193,
-                                backgroundImage: `url("${book.imageLinks.thumbnail})`
+                                backgroundImage: `url("${thumbnail})`
                             }}>
                             <div className="book-shelf-changer">
                                 <select
@@ -26,12 +29,14 @@ class Book extends Component {
                                         )
                                     }}
                                     value={book.shelf || "none"}
-                                >
+                                    >
                                     <option value="move" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>
                                     <option value="read">Read</option>
-                                    <option value="none">None</option>
+                                    {disableNone !== true && (
+                                        <option value="none">None</option>
+                                    )}
                                 </select>
                             </div>
                         </div>
