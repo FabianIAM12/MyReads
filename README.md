@@ -1,11 +1,16 @@
-# MyReads Project - React Project
+# MyReads Project - React
 
-This is a showcase of a react project as part of the Udacity's FrontEnd course. 
-In the MyReads project, i created a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
+This is a react project as part of the Udacity's FrontEnd Nanodegree course. 
 
-## Getting started
+In the MyReads project, i created a bookshelf app that allows you to select and categorize books.
+The books are divided into have read, currently reading or want to read. Another functionality it to search and add other books as well.
+
+## Installing
 
 To get started do this:
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+
+## Acknowledgments
+The programming with React was funny and showed me the power of that awesome JavaScript-Framework.
