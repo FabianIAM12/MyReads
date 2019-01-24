@@ -11,8 +11,18 @@ class Search extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({query: query.trim()})
-        this.search(query)
+        this.setState({query: query.trim()});
+        this.search(query);
+    }
+
+    check_exisiting_shelf(book){
+        let shelf = '';
+        for (let entry in this.props.pinned_books){
+            if (book.id === this.props.pinned_books[entry].id){
+                shelf=this.props.pinned_books[entry].shelf;
+            }
+        }
+        return shelf;
     }
 
     search(query) {
@@ -57,7 +67,7 @@ class Search extends Component {
                             <Book book={book}
                                   key={book.id}
                                   updateShelf={updateShelf}
-                                  disableNone={true}
+                                  existing_shelf={this.check_exisiting_shelf(book)}
                             />
                         ))}
                     </ol>

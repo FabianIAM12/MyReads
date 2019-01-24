@@ -5,7 +5,10 @@ class Book extends Component {
     render() {
         const authors = this.props.book.authors && this.props.book.authors.join(' & ');
         const book = this.props.book;
-        let disableNone = this.props.disableNone;
+
+        if (this.props.existing_shelf){
+            book.shelf=this.props.existing_shelf;
+        }
 
         let UpdateShelf = this.props.updateShelf;
         let thumbnail = book.imageLinks ? book.imageLinks.thumbnail:"";
@@ -34,9 +37,7 @@ class Book extends Component {
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>
                                     <option value="read">Read</option>
-                                    {disableNone !== true && (
-                                        <option value="none">None</option>
-                                    )}
+                                    <option value="none">None</option>
                                 </select>
                             </div>
                         </div>

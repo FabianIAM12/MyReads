@@ -16,6 +16,7 @@ class BooksApp extends React.Component {
     }
 
     updateShelf = (book, shelf) => {
+        console.log(book, shelf);
         BooksAPI.update(book, shelf).then(() => {
             this.getAllBooks()
         })
@@ -43,7 +44,7 @@ class BooksApp extends React.Component {
                     />
                     <Route exact path="/search"
                            render={() => (
-                               <Search saved_books={this.state.books} updateShelf={this.updateShelf}/>
+                               <Search pinned_books={this.state.books} updateShelf={this.updateShelf}/>
                            )}
                     />
                 </Switch>
