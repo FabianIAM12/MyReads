@@ -27,7 +27,6 @@ class Search extends Component {
                 }
             })
         }else{
-            console.log('here')
             this.setState({books: []});
         }
     }
