@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Shelf from "./Shelf";
+import SearchLink from "./SearchLink";
 
 
 class BooksWall extends Component {
@@ -17,6 +18,7 @@ class BooksWall extends Component {
                         <Shelf books = {books.filter(book => book.shelf === 'read')}
                                updateShelf = { updateShelf } name="Read"/>
                     </div>
+                    <SearchLink/>
                 </div>
             </div>
         )
